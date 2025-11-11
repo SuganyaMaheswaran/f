@@ -1,0 +1,4 @@
+#this tells Prettier which files and folders to ignore when formatting
+node_modules/
+package.json
+package-lock.json
