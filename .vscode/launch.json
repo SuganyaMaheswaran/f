@@ -1,0 +1,19 @@
+// This file allows us to connect a debugger to the running process. 
+// For detailed instructions on how to use the VSCode debugger, including setting breakpoints, and inspecting variables see:
+// https://code.visualstudio.com/docs/editor/debugging
+// https://code.visualstudio.com/docs/nodejs/nodejs-debugging
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug via npm run debug",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run-scipt", "debug"],
+            "skipFiles": ["<node_internals>/**"],
+                "type": "node"
+        }
+    ]
+}
