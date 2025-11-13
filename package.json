@@ -4,8 +4,9 @@
   "version": "0.01",
   "description": "Fragments back-end API",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint \"./src/**/*.js\"",
+    "test:watch":"jest -c jest.config.js --runInBand --watch --",
+    "test": "jest -c jest.config.js --runInBand --watch --",
+    "lint": "eslint \"./src/**/*.js\" \"tests/**/*.js\"",
     "start": "node src/index.js",
     "dev": "node --env-file=debug.env --watch  ./src/index.js",
     "debug": "node --env-file=debug.env --inspect=0.0.0.0:9229 --watch src/index.js",
@@ -22,6 +23,7 @@
     "@eslint/js": "^9.39.1",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
+    "jest": "^30.2.0",
     "prettier": "3.6.2"
   },
   "dependencies": {
