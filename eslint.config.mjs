@@ -18,7 +18,7 @@ export default defineConfig([
         ...globals.jest,
       },
     },
-    //this rule lets no-unused-vars as warning  lets inline disables work.
+// This rule treats no-unused-vars as a warning and allows inline disables to work
     rules:{"no-unused-vars": ["warn", { argsIgnorePattern: "^" }]},
   },
   pluginJs.configs.recommended
