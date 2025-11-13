@@ -9,7 +9,13 @@ if(options.level==='debug'){
         target:'pino-pretty',
         options:{
             colorize: true,
-        }
+        },
 
-    }
+    };
 }
+
+// Create and export a Pino Logger instance:
+// https://getpino.io/#/docs/api?id=logger
+
+
+module.exports = require('pino')(options);
