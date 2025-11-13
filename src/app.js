@@ -41,8 +41,7 @@ app.use(passport.initialize());
 app.use('/', require('./routes'))
 
 // Error-handling middleware to deal with anything else 
-// eslint-disable-next-line no-unused-vars 
-// ISSUE: This did not work had to add 'rules:{"no-unused-vars":"warn"}' in eslint.config.mjs
+// eslint-disable-next-line no-unused-vars
 
 app.use((err,req, res, next)=>{
     const status = err.status || 500
