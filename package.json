@@ -5,7 +5,11 @@
   "description": "Fragments back-end API",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint \"./src/**/*.js\""
+    "lint": "eslint \"./src/**/*.js\"",
+    "start": "node src/server.js",
+    "dev": "node --env-file=debug.env --watch  ./src/server.js",
+    "debug": "node --env-file=debug.env --inspect=0.0.0.0:9229 --watch src/server.js",
+    "COMMENTS": "--env.file flag works consistently across Windows, macOS, and Linux, eliminating the need for cross-env package. "
   },
   "repository": {
     "type": "git",
@@ -23,6 +27,7 @@
   "dependencies": {
     "compression": "^1.8.1",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "helmet": "^8.1.0",
     "http": "^0.0.1-security",
