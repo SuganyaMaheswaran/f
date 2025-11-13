@@ -1,3 +1,4 @@
+// Server entry point - it starts our Node.js/Express server and sets it up to handle gracefull shutdowns.
 
 // Stoppable gracefully exits the server (i.e., wait until current connection are finished before shutting down)
 
