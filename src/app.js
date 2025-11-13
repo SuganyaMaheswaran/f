@@ -1,14 +1,12 @@
 //This will define our express app 
 
 const express = require('express');
-
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 
 //author and version from our package.json file
 const {author, version} = require('../package-lock.json');
- 
 const logger = require('./logger');
 
 // Question: this logs the https requests?
@@ -37,32 +35,7 @@ app.use(cors());
 app.use(compression());
 
 // Define our HTTP routes(s)
-
-//This will be a simple health check route
-app.get('/',( req, res)=>{
-
-    //Clients wouldn't cache this response (always request it fresh)
-    // Question: Why don't we have to cache this response?
-    res.setHeader('Cache-Control', "no-cache");
-    
-    // If server is healthy then send 200 'OK' response with info about our repo
-    res.status(200).json({
-        status: 'ok',
-        author, 
-        githubUrl:'https://github.com/SuganyaMaheswaran/f',
-        version, 
-    });
-    // Add middleware for dealing with 404s 
-    app.use((req,res)=>{
-        res.status(404).json({
-            status:'error',
-            error:{
-                message: 'not found',
-                code:404
-            }
-        })
-    })
-});
+app.use('/', require('./routes'))
 
 // Error-handling middleware to deal with anything else 
 // eslint-disable-next-line no-unused-vars 
