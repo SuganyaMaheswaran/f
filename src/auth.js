@@ -6,7 +6,7 @@
 
 const passport = require('passport');
 const BearerStrategy = require('passport-http-bearer').Strategy;
-const {CognitoJwtVerifier, JwtVerifier} = require('aws-jwt-verify');
+const {CognitoJwtVerifier} = require('aws-jwt-verify');
 
 const logger = require('./logger');
 
@@ -26,20 +26,6 @@ const JwtVerifier = CognitoJwtVerifier.create({
 
 
 logger.info('Configured to use AWS Cognito for Authorization');
-
-// At startup, download and cache the public keys (JWKS) we need in order to 
-// verify our Cognito JWTs
-// You can try this yourself using:
-// curl https://cognito-idp.us-east-1.amazonaws.com/<user-pool-id>/.well-known/jwks.json
-
-JwtVerifier
-.hydrate()
-.then(()=>{
-    logger.info('Cognito JWKS successfully cached');
-})
-.catch((err)=>{
-    logger.error({err}, 'Unable to cache Cognito JWKS');
-});
 
 module.exports.strategy = () =>
     new BearerStrategy(async(token,done)=>{
