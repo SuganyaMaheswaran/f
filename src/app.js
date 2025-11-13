@@ -4,7 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
-
+const passport = require('passport');
+const authenticate = require('./auth');
 //author and version from our package.json file
 const {author, version} = require('../package-lock.json');
 const logger = require('./logger');
@@ -33,6 +34,10 @@ app.use(cors());
 // Use gzip/deflate compression middleware
 // Question: what does compression() do ?
 app.use(compression());
+
+// Set up our passport authentication middleware
+passport.use(authenticate.strategy());
+app.use(passport.initialize());
 
 // Define our HTTP routes(s)
 app.use('/', require('./routes'))
