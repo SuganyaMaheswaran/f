@@ -6,8 +6,6 @@ const helmet = require('helmet');
 const compression = require('compression');
 const passport = require('passport');
 const authenticate = require('./auth');
-//author and version from our package.json file
-const {author, version} = require('../package-lock.json');
 const logger = require('./logger');
 
 // Question: this logs the https requests?
