@@ -44,10 +44,22 @@ There are a number of key requirements for this new system:
 - curl
 - [Express](https://expressjs.com/)
 
+Follow these steps to set up and run the project locally.
 
-## Run Code
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+### 2. Install Dependencies
+```bash
+npm install 
+```
 
-### 1. **Lint**
+### 3. Available Scripts  
+
+
+#### 1. **Lint**
 
 > ESLint is a JavaScript linter that helps you find and fix errors in your code. [Read More](https://docs.expo.dev/guides/using-eslint/)
 
@@ -59,7 +71,7 @@ npm run lint
 - Fix errors before committing.
 - In VSCode, you'll also see linting issues inline if you installed the ESLint extension.
 
-### 2. Start
+#### 2. Start
 
 Run server in production mode
 
@@ -71,7 +83,7 @@ npm start
 - Logs at the default level (`info` unless overridden).
 - Stop server with `CTRL + C`.
 
-### 3. Dev
+#### 3. Dev
 
 Run server in development mode with auto-restart
 
@@ -82,7 +94,7 @@ npm run dev
 - Uses Node's built-in `--watch` to restart on code changes
 - Loads environment variables from `debug.env`
 
-### 4. Debug
+#### 4. Debug
 
 Run the server in development mode with debugging enabled.
 
