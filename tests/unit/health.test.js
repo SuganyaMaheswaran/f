@@ -34,8 +34,7 @@ describe('/ health check', ()=>{
         expect(res.body.author).toEqual(author);
         expect(res.body.githubUrl.startsWith('https://github.com')).toBe(true);
         expect(res.body.version).toEqual(version);
-
-    }
+    })
 })
 
 
