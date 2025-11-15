@@ -1,5 +1,7 @@
 // This will implement our GET /v1/fragments route 
 
+const { createSuccessResponse } = require("../../response");
+
 
 
 /** 
@@ -7,8 +9,8 @@
  */
 
 module.exports = (req,res)=>{
-    res.status(200).json({
+    res.status(200).json(createSuccessResponse({
         status:'ok',
         Fragment:[],
-    });
+    }));
 };
