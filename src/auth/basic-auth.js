@@ -16,14 +16,16 @@ if (!process.env.HTPASSWD_FILE){
 logger.info('Using HTTP Basic Auth for auth');
 
 //a function meant to set up (or register) your HTTP Basic Auth strategy with Passport
-module.exports.strategy = ()=>{
+module.exports.strategy = ()=>
     // For our Passport authentication strategy, we'll look for a 
     // username/password pair in the Authroization header. 
+    
     authPassport(
+       
         auth.basic({
             file:process.env.HTPASSWD_FILE,
         })
-    )
-}
+    );
+
 // authenticate – a function that returns the Passport middleware for actually protecting routes:
-module.exports.authenticate = ()=> passport.authenticate('http', {session:false})
+module.exports.authenticate = () => passport.authenticate('http', {session:false});
