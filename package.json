@@ -4,13 +4,13 @@
   "version": "0.01",
   "description": "Fragments back-end API",
   "scripts": {
-    "test:watch":"jest -c jest.config.js --runInBand --watch --",
-    "test": "jest -c jest.config.js --runInBand --watch --",
-    "lint": "eslint \"./src/**/*.js\" \"tests/**/*.js\"",
+    "test:watch": "jest -c jest.config.js --runInBand --watch --",
+    "test": "jest -c jest.config.js --runInBand --",
+    "coverage": "jest -c jest.config.js --runInBand --coverage",
+    "lint": "eslint \"./src/**/*.js\"",
     "start": "node src/index.js",
-    "dev": "node --env-file=debug.env --watch  ./src/index.js",
-    "debug": "node --env-file=debug.env --inspect=0.0.0.0:9229 --watch src/index.js",
-    "COMMENTS": "--env.file flag works consistently across Windows, macOS, and Linux, eliminating the need for cross-env package. "
+    "dev": "LOG_LEVEL=debug nodemon ./src/index.js --watch src",
+    "debug": "LOG_LEVEL=debug nodemon --inspect=0.0.0.0:9229 ./src/index.js --watch src"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,8 @@
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
     "jest": "^30.2.0",
-    "prettier": "3.6.2"
+    "prettier": "3.6.2",
+    "supertest": "^7.1.4"
   },
   "dependencies": {
     "compression": "^1.8.1",
@@ -33,6 +34,8 @@
     "express": "^4.21.2",
     "helmet": "^8.1.0",
     "http": "^0.0.1-security",
+    "http-auth": "^4.2.1",
+    "http-auth-passport": "^1.0.7",
     "pino": "^10.1.0",
     "pino-http": "^11.0.0",
     "pino-pretty": "^13.1.2",
