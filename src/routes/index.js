@@ -5,6 +5,7 @@ const {authenticate} = require('../auth');
 
 // Version and author from package.json
 const {version, author} = require('../../package.json');
+const { createSuccessResponse } = require('../response');
 
 // Create a router that we can use to mount our API
 const router = express.Router(); 
@@ -25,12 +26,12 @@ router.get('/', (req,res)=>{
     // Client's shouldn't cache this response (always a request it fresh);
     res.setHeader('Cache-Control', 'no-cache');
     // Send a 200 'OK' respones
-    res.status(200).json({
+    res.status(200).json(createSuccessResponse({
         status:'ok',
         author,
         githubUrl:'https://github.com/SuganyaMaheswaran/fragments',
         version,
-    });
+    }));
 });
 
 module.exports = router;
