@@ -15,50 +15,48 @@ on:
         branches:
             - main
 
+
 jobs:
   lint:
-  # Give your job a name that will show in the Github Actions web UI
     name: ESLint
-     # We run this on a Linux (Ubuntu) VM, since we'll deploy on Linux too. 
     runs-on: ubuntu-latest
-    # We run these steps one after other, and if any fail, we stop the process
-    # GitHub Actions VM starts empty
     steps:
-           
-    # Checkout your repo into Github actions
       - name: Check out code
         uses: actions/checkout@v4
-           
-        # Install Node so we can run npm 
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-        # Use node LTS https://github.com/actions/setup-node#supported-version-syntax
           node-version: 'lts/*'
-          # This tells Github Actions: Cache the node_modules folder between runs so we don’t download everything every time
           cache: 'npm'
 
-        # Install ESLint + deps    
       - name: Install node dependencies
-        # Use `ci` vs. `install, see https://docs.npmjs.com/cli/v8/commands/npm-ci
         run: npm ci
-            
-        # Run ESLint to verify code quality
+
       - name: Run ESLint
         run: npm run lint
+
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Check out code
         uses: actions/checkout@v4
 
       - name: Setup node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node-version: 'lts/*'
           cache: 'npm'
-      - name: Install node dependencies and run tests
-        run:  npm install-ci-test
 
-            
+      - name: Install node dependencies and run Tests
+        # There are two ways we could do this:
+        #
+        # 1. Call `npm ci` followed by `npm test` like so (NOTE: the use of | and -):
+        # run: |
+        # - npm install
+        # - npm test
+        #
+        # 2. Use `install-ci-test` to do it in a single command, see https://docs.npmjs.com/cli/v8/commands/npm-install-ci-test
+        # run: npm install-ci-test
+        run: npm install-ci-test
