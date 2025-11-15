@@ -7,6 +7,7 @@ const compression = require('compression');
 const passport = require('passport');
 const authenticate = require('./auth');
 const logger = require('./logger');
+const { createErrorResponse } = require('./response');
 
 // Question: this logs the https requests?
 const pino = require('pino-http')({
@@ -45,20 +46,14 @@ app.use('/', require('./routes'))
 // Add 404 middleware to handle any requests for resources that can't be found can't be found
 app.use((req, res) => {
   // Pass along an error object to the error-handling middleware
-  res.status(404).json({
-    status: 'error',
-    error: {
-      message: 'not found',
-      code: 404,
-    },
-  });
+  res.status(404).json(createErrorResponse(404,'not found'));
 });
 
 
 // Error-handling middleware to deal with anything else 
 // eslint-disable-next-line no-unused-vars
 
-app.use((err, req, res, next)=>{
+app.use((err,req, res, next)=>{
     const status = err.status || 500
     const  message = err.message || 'unable to process request';
 
