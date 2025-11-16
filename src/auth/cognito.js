@@ -40,7 +40,7 @@ jwtVerifier
     logger.error({ err }, 'Unable to cache Cognito JWKS');
   });
 
-module.exports.strategy = () =>{
+module.exports.strategy = () =>
         new BearerStrategy(async(token, done)=>{
         try{
             //Verify this JWT
@@ -54,6 +54,6 @@ module.exports.strategy = () =>{
             done(null, false);
         }
     });
-}
+
 
 module.exports.authenticate = () => passport.authenticate('bearer', {session: false});
