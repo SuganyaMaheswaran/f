@@ -1,7 +1,5 @@
 // This file is for in memory db implementation
 
-const { memo } = require("react");
-
 const validateKey = (key) => typeof key === 'string';
 
 class MemoryDB {
